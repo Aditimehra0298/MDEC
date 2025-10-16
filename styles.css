@@ -6858,7 +6858,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px;
+    min-height: 500px;
     margin-top: 40px;
 }
 
@@ -6867,10 +6867,10 @@ body {
     align-items: center;
     position: relative;
     width: 100%;
-    max-width: 800px;
-    height: 120px;
+    max-width: 1000px;
+    height: 200px;
     perspective: 1000px;
-    gap: 10px;
+    gap: 15px;
 }
 
 .gallery-nav a {
@@ -6886,8 +6886,8 @@ body {
 }
 
 .gallery-nav a:hover {
-    flex: 2;
-    transform: translateZ(50px) rotateY(15deg) scale(1.1);
+    flex: 2.5;
+    transform: translateZ(80px) rotateY(20deg) scale(1.2);
     z-index: 10;
 }
 
@@ -6937,18 +6937,18 @@ body {
 }
 
 /* Individual image hover effects */
-.gallery-nav a:nth-child(1):hover { transform: translateZ(60px) rotateY(20deg) scale(1.15); }
-.gallery-nav a:nth-child(2):hover { transform: translateZ(55px) rotateY(15deg) scale(1.12); }
-.gallery-nav a:nth-child(3):hover { transform: translateZ(50px) rotateY(10deg) scale(1.1); }
-.gallery-nav a:nth-child(4):hover { transform: translateZ(45px) rotateY(5deg) scale(1.08); }
-.gallery-nav a:nth-child(5):hover { transform: translateZ(40px) rotateY(0deg) scale(1.05); }
-.gallery-nav a:nth-child(6):hover { transform: translateZ(45px) rotateY(-5deg) scale(1.08); }
-.gallery-nav a:nth-child(7):hover { transform: translateZ(50px) rotateY(-10deg) scale(1.1); }
-.gallery-nav a:nth-child(8):hover { transform: translateZ(55px) rotateY(-15deg) scale(1.12); }
-.gallery-nav a:nth-child(9):hover { transform: translateZ(60px) rotateY(-20deg) scale(1.15); }
-.gallery-nav a:nth-child(10):hover { transform: translateZ(55px) rotateY(-15deg) scale(1.12); }
-.gallery-nav a:nth-child(11):hover { transform: translateZ(50px) rotateY(-10deg) scale(1.1); }
-.gallery-nav a:nth-child(12):hover { transform: translateZ(45px) rotateY(-5deg) scale(1.08); }
+.gallery-nav a:nth-child(1):hover { transform: translateZ(100px) rotateY(25deg) scale(1.25); }
+.gallery-nav a:nth-child(2):hover { transform: translateZ(90px) rotateY(20deg) scale(1.22); }
+.gallery-nav a:nth-child(3):hover { transform: translateZ(80px) rotateY(15deg) scale(1.2); }
+.gallery-nav a:nth-child(4):hover { transform: translateZ(70px) rotateY(10deg) scale(1.18); }
+.gallery-nav a:nth-child(5):hover { transform: translateZ(60px) rotateY(5deg) scale(1.15); }
+.gallery-nav a:nth-child(6):hover { transform: translateZ(70px) rotateY(-5deg) scale(1.18); }
+.gallery-nav a:nth-child(7):hover { transform: translateZ(80px) rotateY(-10deg) scale(1.2); }
+.gallery-nav a:nth-child(8):hover { transform: translateZ(90px) rotateY(-15deg) scale(1.22); }
+.gallery-nav a:nth-child(9):hover { transform: translateZ(100px) rotateY(-20deg) scale(1.25); }
+.gallery-nav a:nth-child(10):hover { transform: translateZ(90px) rotateY(-15deg) scale(1.22); }
+.gallery-nav a:nth-child(11):hover { transform: translateZ(80px) rotateY(-10deg) scale(1.2); }
+.gallery-nav a:nth-child(12):hover { transform: translateZ(70px) rotateY(-5deg) scale(1.18); }
 
 .debug-toggle {
     position: fixed;
