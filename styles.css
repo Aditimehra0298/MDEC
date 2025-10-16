@@ -857,20 +857,35 @@ body {
 }
 
 .proof-item {
-    background: linear-gradient(135deg, #ea580c, #f97316);
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     padding: 8px 16px;
     border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 500;
-    border: 1px solid rgba(234, 88, 12, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
 
 .proof-item:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #ea580c, #f97316);
+    border: 1px solid rgba(234, 88, 12, 0.3);
+    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+}
+
+/* Orange proof points for non-hero sections */
+.mdes-journey-section .proof-item {
+    background: linear-gradient(135deg, #ea580c, #f97316);
+    border: 1px solid rgba(234, 88, 12, 0.3);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+}
+
+.mdes-journey-section .proof-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
     background: linear-gradient(135deg, #dc2626, #ea580c);
@@ -6854,9 +6869,30 @@ body {
     color: #999;
 }
 
+.powered-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.damnart-logo {
+    height: 20px;
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.damnart-logo:hover {
+    opacity: 1;
+}
+
 /* MDES Journey Interactive Gallery */
 .mdes-journey-section {
-    background: url('n.png');
+    background: url('https://thumbs.dreamstime.com/b/business-cogs-technology-background-banner-computer-circuits-56974243.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
