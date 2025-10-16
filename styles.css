@@ -6880,7 +6880,60 @@ body {
 
 .mdes-journey-section .section-subtitle {
     color: #666;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Event Info Section */
+.event-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(249, 115, 22, 0.05));
+    border-radius: 15px;
+    border: 2px solid rgba(234, 88, 12, 0.2);
+    box-shadow: 0 8px 25px rgba(234, 88, 12, 0.15);
+    transition: all 0.3s ease;
+}
+
+.event-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(234, 88, 12, 0.2);
+    border-color: rgba(234, 88, 12, 0.3);
+}
+
+.event-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ea580c, #f97316);
+    border-radius: 12px;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+}
+
+.event-details {
+    text-align: left;
+}
+
+.event-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ea580c;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+}
+
+.event-date-venue {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    font-weight: 500;
 }
 
 /* Video Grid Section */
