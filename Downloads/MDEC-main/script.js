@@ -1159,10 +1159,10 @@ document.addEventListener('DOMContentLoaded', () => {
     cols.forEach(col => {
         function toggleFlip(e) {
             // Only flip if the event target is the .col itself
-            // or one of its non-interactive children (.container, .front)
+            // or one of its non-interactive children (.card-container, .front)
             // This prevents flipping when buttons are clicked/tapped
             if (e.target.classList.contains('col') || 
-                e.target.classList.contains('container') || 
+                e.target.classList.contains('card-container') || 
                 e.target.classList.contains('front')) {
                 
                 col.classList.toggle('hover');

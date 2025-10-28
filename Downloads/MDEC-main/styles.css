@@ -7411,7 +7411,7 @@ body {
     justify-content: center;
 }
 
-.mdes-collaborators .container {
+.mdes-collaborators .card-container {
     transform-style: preserve-3d;
     perspective: 1000px;
     width: 100%;
@@ -7445,8 +7445,8 @@ body {
 }
 
 
-.mdes-collaborators .container:hover .front,
-.mdes-collaborators .container:hover .back {
+.mdes-collaborators .card-container:hover .front,
+.mdes-collaborators .card-container:hover .back {
     transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
@@ -7470,32 +7470,32 @@ body {
     z-index: 2;
 }
 
-.mdes-collaborators .col.hover .container .back {
+.mdes-collaborators .col.hover .card-container .back {
     transform: rotateY(0deg);
     transform-style: preserve-3d;
 }
 
-.mdes-collaborators .col.hover .container .front {
+.mdes-collaborators .col.hover .card-container .front {
     transform: rotateY(-180deg);
     transform-style: preserve-3d;
 }
 
-.mdes-collaborators .container .back {
+.mdes-collaborators .card-container .back {
     transform: rotateY(180deg);
     transform-style: preserve-3d;
 }
 
-.mdes-collaborators .container .front {
+.mdes-collaborators .card-container .front {
     transform: rotateY(0deg);
     transform-style: preserve-3d;
 }
 
-.mdes-collaborators .container:hover .back {
+.mdes-collaborators .card-container:hover .back {
     transform: rotateY(0deg);
     transform-style: preserve-3d;
 }
 
-.mdes-collaborators .container:hover .front {
+.mdes-collaborators .card-container:hover .front {
     transform: rotateY(-180deg);
     transform-style: preserve-3d;
 }
