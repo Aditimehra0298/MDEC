@@ -7450,3 +7450,205 @@ h5.hero-title {
 .mb-4 {
     margin-bottom: 1.5rem;
 }
+
+/* MDES Collaborators Section */
+.mdes-collaborators {
+    padding: 4rem 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mdes-collaborators .wrapper {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 80rem;
+}
+
+.mdes-collaborators .cols {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mdes-collaborators .col {
+    width: calc(25% - 2rem);
+    margin: 1rem;
+    cursor: pointer;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mdes-collaborators .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(255, 140, 0, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #ff5e00;
+    line-height: 1.3;
+    width: 100%;
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mdes-collaborators .card-container {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    width: 100%;
+    flex: 1;
+}
+
+.mdes-collaborators .front,
+.mdes-collaborators .back {
+    background-size: cover;
+    box-shadow: 0 6px 12px 0 rgba(255, 140, 0, 0.3);
+    border: 2px solid #ff5e00;
+    border-radius: 10px;
+    background-position: center;
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    backface-visibility: hidden;
+    text-align: center;
+    min-height: 280px;
+    height: auto;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.mdes-collaborators .front {
+    filter: brightness(1.6);
+}
+
+.mdes-collaborators .back {
+    background: #FF8C00;
+    background: -webkit-linear-gradient(135deg, #FF8C00 0%, #FF4500 100%);
+    background: linear-gradient(135deg, #FF8C00 0%, #FF4500 100%);
+}
+
+.mdes-collaborators .card-container:hover .front,
+.mdes-collaborators .card-container:hover .back {
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.mdes-collaborators .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.mdes-collaborators .inner {
+    transform: translateY(-50%) translateZ(60px) scale(0.94);
+    top: 50%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    outline: 1px solid transparent;
+    perspective: inherit;
+    z-index: 2;
+}
+
+.mdes-collaborators .col.hover .card-container .back {
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .col.hover .card-container .front {
+    transform: rotateY(-180deg);
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .card-container .back {
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .card-container .front {
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .card-container:hover .back {
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .card-container:hover .front {
+    transform: rotateY(-180deg);
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .logo-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.mdes-collaborators .logo-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.mdes-collaborators .logo-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.mdes-collaborators .apply-btn {
+    background-color: #ff5e00;
+    border: 2px solid #ff5e00;
+    font-weight: bold;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mdes-collaborators .apply-btn:hover {
+    background-color: #e55a2b;
+    border-color: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 94, 0, 0.3);
+}
+
+/* Responsive styles for MDES Collaborators */
+@media screen and (max-width: 64rem) {
+    .mdes-collaborators .col {
+        width: calc(33.333333% - 2rem);
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .mdes-collaborators .col {
+        width: calc(50% - 2rem);
+    }
+}
+
+@media screen and (max-width: 32rem) {
+    .mdes-collaborators .col {
+        width: 100%;
+        margin: 1rem 0;
+    }
+    
+    .mdes-collaborators .card-title {
+        font-size: 1rem;
+        padding: 0.4rem;
+        min-height: 3rem;
+    }
+}
