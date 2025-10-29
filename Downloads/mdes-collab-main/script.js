@@ -1190,13 +1190,122 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Company Info Modal Functions
+function showCompanyInfo(companyName) {
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('companyInfoModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'companyInfoModal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="companyInfoTitle">Company Information</h2>
+                    <span class="close" onclick="closeCompanyInfoModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="companyInfoContent">
+                        <!-- Company information will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    
+    // Update content based on company
+    const title = document.getElementById('companyInfoTitle');
+    const content = document.getElementById('companyInfoContent');
+    
+    if (companyName === 'Company 1') {
+        title.textContent = 'Company 1 - Testing & Compliance';
+        content.innerHTML = `
+            <div class="company-info">
+                <h3>Company 1</h3>
+                <p><strong>Specialization:</strong> Testing & Compliance Solutions</p>
+                <p><strong>Services:</strong></p>
+                <ul>
+                    <li>Quality Assurance Testing</li>
+                    <li>Compliance Certification</li>
+                    <li>Safety Standards Testing</li>
+                    <li>Regulatory Compliance</li>
+                </ul>
+                <p><strong>Contact:</strong> For more information about our services, please contact us through the main application form.</p>
+            </div>
+        `;
+    } else if (companyName === 'Company 2') {
+        title.textContent = 'Company 2 - Testing & Compliance';
+        content.innerHTML = `
+            <div class="company-info">
+                <h3>Company 2</h3>
+                <p><strong>Specialization:</strong> Advanced Testing Solutions</p>
+                <p><strong>Services:</strong></p>
+                <ul>
+                    <li>Automated Testing Systems</li>
+                    <li>Performance Testing</li>
+                    <li>Compliance Monitoring</li>
+                    <li>Quality Control Solutions</li>
+                </ul>
+                <p><strong>Contact:</strong> For more information about our services, please contact us through the main application form.</p>
+            </div>
+        `;
+    } else {
+        title.textContent = 'Testing & Compliance Partners';
+        content.innerHTML = `
+            <div class="company-info">
+                <h3>Testing & Compliance Collaboration</h3>
+                <p><strong>Overview:</strong> Our Testing & Compliance partners provide comprehensive quality assurance and regulatory compliance solutions for MDES projects.</p>
+                <p><strong>Key Areas:</strong></p>
+                <ul>
+                    <li>Quality Assurance & Testing</li>
+                    <li>Regulatory Compliance</li>
+                    <li>Safety Standards</li>
+                    <li>Performance Validation</li>
+                    <li>Certification Services</li>
+                </ul>
+                <p><strong>Partnership Benefits:</strong></p>
+                <ul>
+                    <li>Access to specialized testing equipment</li>
+                    <li>Expert compliance guidance</li>
+                    <li>Streamlined certification processes</li>
+                    <li>Quality assurance support</li>
+                </ul>
+                <p><strong>How to Apply:</strong> Click on any of the partner logos above or use the "Know More About Company" button to learn about specific partners and their services.</p>
+            </div>
+        `;
+    }
+    
+    // Show modal
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCompanyInfoModal() {
+    const modal = document.getElementById('companyInfoModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
 // Initialize Google Sheets Integration
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Google Sheets integration
     if (typeof GoogleSheetsIntegration !== 'undefined') {
-        window.window.googleSheetsIntegration = new GoogleSheetsIntegration();
+        window.googleSheetsIntegration = new GoogleSheetsIntegration();
         console.log('Google Sheets integration initialized');
     } else {
         console.warn('GoogleSheetsIntegration class not found. Make sure google-sheets-integration.js is loaded.');
+    }
+    
+    // Close company info modal when clicking outside
+    const companyModal = document.getElementById('companyInfoModal');
+    if (companyModal) {
+        companyModal.addEventListener('click', function(e) {
+            if (e.target === companyModal) {
+                closeCompanyInfoModal();
+            }
+        });
     }
 });

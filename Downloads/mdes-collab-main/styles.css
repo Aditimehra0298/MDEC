@@ -7627,27 +7627,6 @@ h5.hero-title {
     box-shadow: 0 4px 8px rgba(255, 94, 0, 0.3);
 }
 
-/* No-flip card styles - always show back side */
-.mdes-collaborators .col.no-flip .card-container .back {
-    transform: rotateY(0deg) !important;
-    transform-style: preserve-3d;
-}
-
-.mdes-collaborators .col.no-flip .card-container .front {
-    transform: rotateY(-180deg) !important;
-    transform-style: preserve-3d;
-}
-
-.mdes-collaborators .col.no-flip .card-container:hover .back {
-    transform: rotateY(0deg) !important;
-    transform-style: preserve-3d;
-}
-
-.mdes-collaborators .col.no-flip .card-container:hover .front {
-    transform: rotateY(-180deg) !important;
-    transform-style: preserve-3d;
-}
-
 /* Responsive styles for MDES Collaborators */
 @media screen and (max-width: 64rem) {
     .mdes-collaborators .col {
@@ -7726,6 +7705,49 @@ h5.hero-title {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Clickable Logo Styles */
+.clickable-logo {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.clickable-logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 94, 0, 0.3);
+}
+
+/* Company Info Modal Styles */
+.company-info {
+    padding: 1rem 0;
+}
+
+.company-info h3 {
+    color: #ff5e00;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.company-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.company-info ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.company-info li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.company-info strong {
+    color: #ff5e00;
 }
 
 /* Modal responsive styles for collaborator form */
