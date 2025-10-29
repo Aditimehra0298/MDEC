@@ -7627,6 +7627,27 @@ h5.hero-title {
     box-shadow: 0 4px 8px rgba(255, 94, 0, 0.3);
 }
 
+/* No-flip card styles - always show back side */
+.mdes-collaborators .col.no-flip .card-container .back {
+    transform: rotateY(0deg) !important;
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .col.no-flip .card-container .front {
+    transform: rotateY(-180deg) !important;
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .col.no-flip .card-container:hover .back {
+    transform: rotateY(0deg) !important;
+    transform-style: preserve-3d;
+}
+
+.mdes-collaborators .col.no-flip .card-container:hover .front {
+    transform: rotateY(-180deg) !important;
+    transform-style: preserve-3d;
+}
+
 /* Responsive styles for MDES Collaborators */
 @media screen and (max-width: 64rem) {
     .mdes-collaborators .col {
