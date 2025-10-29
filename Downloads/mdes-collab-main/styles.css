@@ -7652,3 +7652,80 @@ h5.hero-title {
         min-height: 3rem;
     }
 }
+
+/* MDES Collaborator Modal Styles */
+.collaborator-form {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.collaborator-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.collaborator-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.collaborator-form input,
+.collaborator-form select,
+.collaborator-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.collaborator-form input:focus,
+.collaborator-form select:focus,
+.collaborator-form textarea:focus {
+    outline: none;
+    border-color: #ff5e00;
+    box-shadow: 0 0 0 3px rgba(255, 94, 0, 0.1);
+}
+
+.collaborator-form input:invalid {
+    border-color: #ff5e00;
+}
+
+.collaborator-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Center the submit button in collaborator modal */
+.collaborator-form .modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal responsive styles for collaborator form */
+@media screen and (max-width: 768px) {
+    .collaborator-form {
+        padding: 0 1rem;
+    }
+    
+    .collaborator-form .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .collaborator-form input,
+    .collaborator-form select,
+    .collaborator-form textarea {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

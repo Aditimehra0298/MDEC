@@ -297,8 +297,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 try {
-                    if (typeof googleSheetsIntegration !== 'undefined') {
-                        const result = await googleSheetsIntegration.sendPackageForm(data, data.package);
+                    if (typeof window.googleSheetsIntegration !== 'undefined') {
+                        const result = await window.googleSheetsIntegration.sendPackageForm(data, data.package);
                         if (result.success) {
                             console.log('Enhance form data saved to Google Sheets');
                         } else {
@@ -788,8 +788,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 try {
-                    if (typeof googleSheetsIntegration !== 'undefined') {
-                        const result = await googleSheetsIntegration.sendApplicationForm(data);
+                    if (typeof window.googleSheetsIntegration !== 'undefined') {
+                        const result = await window.googleSheetsIntegration.sendApplicationForm(data);
                         if (result.success) {
                             console.log('Modal form data saved to Google Sheets');
                         } else {
@@ -886,8 +886,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     
                     try {
-                        if (typeof googleSheetsIntegration !== 'undefined') {
-                            const result = await googleSheetsIntegration.sendPackageForm(data, packageType);
+                        if (typeof window.googleSheetsIntegration !== 'undefined') {
+                            const result = await window.googleSheetsIntegration.sendPackageForm(data, packageType);
                             if (result.success) {
                                 console.log('Package form data saved to Google Sheets');
                             } else {
@@ -960,8 +960,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 try {
-                    if (typeof googleSheetsIntegration !== 'undefined') {
-                        const result = await googleSheetsIntegration.sendPackageForm(data, data.package);
+                    if (typeof window.googleSheetsIntegration !== 'undefined') {
+                        const result = await window.googleSheetsIntegration.sendPackageForm(data, data.package);
                         if (result.success) {
                             console.log('Wall of Excellence form data saved to Google Sheets');
                         } else {
@@ -1036,8 +1036,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         additionalInfo: `Venue: Engimech Exhibition, Ahmedabad`
                     };
                     
-                    if (typeof googleSheetsIntegration !== 'undefined') {
-                        const result = await googleSheetsIntegration.sendCalendarBooking(bookingData);
+                    if (typeof window.googleSheetsIntegration !== 'undefined') {
+                        const result = await window.googleSheetsIntegration.sendCalendarBooking(bookingData);
                         if (result.success) {
                             console.log('Booking form data saved to Google Sheets');
                         } else {
@@ -1065,4 +1065,138 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Note: View Packages button removed - no longer needed since package choices were removed from forms
+});
+
+// MDES Collaborator Modal Functions
+function openCollaboratorModal(category = '') {
+    const modal = document.getElementById('collaboratorModal');
+    const categorySelect = document.getElementById('collaboratorCategory');
+    
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Pre-select the category if provided
+        if (category && categorySelect) {
+            categorySelect.value = category;
+        }
+    }
+}
+
+function closeCollaboratorModal() {
+    const modal = document.getElementById('collaboratorModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Reset form
+        const form = document.getElementById('collaboratorForm');
+        if (form) {
+            form.reset();
+        }
+    }
+}
+
+function submitCollaboratorApplication() {
+    const form = document.getElementById('collaboratorForm');
+    const formData = new FormData(form);
+    
+    // Validate required fields
+    const requiredFields = ['company', 'contact', 'email', 'phone', 'category'];
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        const input = form.querySelector(`[name="${field}"]`);
+        if (!input.value.trim()) {
+            isValid = false;
+            input.style.borderColor = '#ff5e00';
+        } else {
+            input.style.borderColor = '#ddd';
+        }
+    });
+    
+    if (isValid) {
+        // Convert FormData to object
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+        
+        // Add additional fields for Google Sheets
+        data.name = data.contact; // Use contact person as name
+        data.message = data.message || 'MDES Collaboration Application';
+        
+        // Show loading state
+        const submitButton = document.querySelector('.submit-button');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Submitting...';
+        submitButton.disabled = true;
+        
+        // Use existing Google Sheets integration
+        if (window.window.googleSheetsIntegration) {
+            window.window.googleSheetsIntegration.sendFormData(data, 'MDES Collaborator Application')
+                .then(result => {
+                    if (result.success) {
+                        alert('Thank you for your collaboration application! We will contact you soon.');
+                        closeCollaboratorModal();
+                    } else {
+                        alert('There was an error submitting your application. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    alert('There was an error submitting your application. Please try again.');
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                });
+        } else {
+            // Fallback if Google Sheets integration is not available
+            alert('Thank you for your collaboration application! We will contact you soon.');
+            closeCollaboratorModal();
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
+    } else {
+        alert('Please fill in all required fields.');
+    }
+}
+
+// Add event listeners to all Apply buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const applyButtons = document.querySelectorAll('.apply-btn');
+    applyButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the category from the card title
+            const cardTitle = this.closest('.col').querySelector('.card-title');
+            const category = cardTitle ? cardTitle.textContent.trim() : '';
+            
+            openCollaboratorModal(category);
+        });
+    });
+    
+    // Close modal when clicking outside of it
+    const modal = document.getElementById('collaboratorModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeCollaboratorModal();
+            }
+        });
+    }
+});
+
+// Initialize Google Sheets Integration
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Google Sheets integration
+    if (typeof GoogleSheetsIntegration !== 'undefined') {
+        window.window.googleSheetsIntegration = new GoogleSheetsIntegration();
+        console.log('Google Sheets integration initialized');
+    } else {
+        console.warn('GoogleSheetsIntegration class not found. Make sure google-sheets-integration.js is loaded.');
+    }
 });

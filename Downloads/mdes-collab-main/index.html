@@ -1656,6 +1656,71 @@
         </div>
     </section>
 
+    <!-- MDES Collaborator Application Modal -->
+    <div id="collaboratorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Apply for MDES Collaboration</h2>
+                <span class="close" onclick="closeCollaboratorModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="collaboratorForm" class="collaborator-form">
+                    <div class="form-group">
+                        <label for="collaboratorCompany">Company Name *</label>
+                        <input type="text" id="collaboratorCompany" name="company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="collaboratorWebsite">Website</label>
+                        <input type="url" id="collaboratorWebsite" name="website">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="collaboratorContact">Contact Person *</label>
+                        <input type="text" id="collaboratorContact" name="contact" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="collaboratorEmail">Email *</label>
+                        <input type="email" id="collaboratorEmail" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="collaboratorPhone">Phone *</label>
+                        <input type="tel" id="collaboratorPhone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="collaboratorCategory">Collaboration Category *</label>
+                        <select id="collaboratorCategory" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="IoT & Embedded Programming">IoT & Embedded Programming</option>
+                            <option value="Reverse Engineering Service Provider">Reverse Engineering Service Provider</option>
+                            <option value="Training Providers on IoT / SCADA / HMI / Data /Sensors">Training Providers on IoT / SCADA / HMI / Data /Sensors</option>
+                            <option value="Consultancy & Design Process">Consultancy & Design Process</option>
+                            <option value="Testing & Compliance">Testing & Compliance</option>
+                            <option value="Data Acquisition & Transmission Modules">Data Acquisition & Transmission Modules</option>
+                            <option value="Additive Manufacturing">Additive Manufacturing</option>
+                            <option value="Robotic Integration in Machines">Robotic Integration in Machines</option>
+                            <option value="Safety Relay & Other Component Supplier Relays">Safety Relay & Other Component Supplier Relays</option>
+                            <option value="Vision & Sensor Modules Provider">Vision & Sensor Modules Provider</option>
+                            <option value="B2B Marketing Consultant">B2B Marketing Consultant</option>
+                            <option value="Electrical Design for Control Panel">Electrical Design for Control Panel</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="collaboratorMessage">Message</label>
+                        <textarea id="collaboratorMessage" name="message" rows="4" placeholder="Tell us about your collaboration interests and how you can contribute to MDES..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="submit-button" onclick="submitCollaboratorApplication()">Submit Application</button>
+            </div>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
