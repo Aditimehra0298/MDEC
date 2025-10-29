@@ -1190,7 +1190,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Company Info Modal Functions
+// QR Code Scanner Modal Functions
 function showCompanyInfo(companyName) {
     // Create modal if it doesn't exist
     let modal = document.getElementById('companyInfoModal');
@@ -1199,14 +1199,14 @@ function showCompanyInfo(companyName) {
         modal.id = 'companyInfoModal';
         modal.className = 'modal';
         modal.innerHTML = `
-            <div class="modal-content">
+            <div class="modal-content qr-scanner-modal">
                 <div class="modal-header">
-                    <h2 id="companyInfoTitle">Company Information</h2>
+                    <h2 id="companyInfoTitle">QR Code Scanner</h2>
                     <span class="close" onclick="closeCompanyInfoModal()">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <div id="companyInfoContent">
-                        <!-- Company information will be loaded here -->
+                    <div id="qrScannerContent">
+                        <!-- QR Scanner will be loaded here -->
                     </div>
                 </div>
             </div>
@@ -1216,69 +1216,68 @@ function showCompanyInfo(companyName) {
     
     // Update content based on company
     const title = document.getElementById('companyInfoTitle');
-    const content = document.getElementById('companyInfoContent');
+    const content = document.getElementById('qrScannerContent');
     
-    if (companyName === 'Company 1') {
-        title.textContent = 'Company 1 - Testing & Compliance';
-        content.innerHTML = `
-            <div class="company-info">
-                <h3>Company 1</h3>
-                <p><strong>Specialization:</strong> Testing & Compliance Solutions</p>
-                <p><strong>Services:</strong></p>
-                <ul>
-                    <li>Quality Assurance Testing</li>
-                    <li>Compliance Certification</li>
-                    <li>Safety Standards Testing</li>
-                    <li>Regulatory Compliance</li>
-                </ul>
-                <p><strong>Contact:</strong> For more information about our services, please contact us through the main application form.</p>
+    title.textContent = 'QR Scanner';
+    content.innerHTML = `
+        <div class="qr-scanner-container">
+            <div class="qr-scanner-wrapper">
+                <div id="qr-reader" style="width: 250px; height: 250px; margin: 0 auto;"></div>
             </div>
-        `;
-    } else if (companyName === 'Company 2') {
-        title.textContent = 'Company 2 - Testing & Compliance';
-        content.innerHTML = `
-            <div class="company-info">
-                <h3>Company 2</h3>
-                <p><strong>Specialization:</strong> Advanced Testing Solutions</p>
-                <p><strong>Services:</strong></p>
-                <ul>
-                    <li>Automated Testing Systems</li>
-                    <li>Performance Testing</li>
-                    <li>Compliance Monitoring</li>
-                    <li>Quality Control Solutions</li>
-                </ul>
-                <p><strong>Contact:</strong> For more information about our services, please contact us through the main application form.</p>
-            </div>
-        `;
-    } else {
-        title.textContent = 'Testing & Compliance Partners';
-        content.innerHTML = `
-            <div class="company-info">
-                <h3>Testing & Compliance Collaboration</h3>
-                <p><strong>Overview:</strong> Our Testing & Compliance partners provide comprehensive quality assurance and regulatory compliance solutions for MDES projects.</p>
-                <p><strong>Key Areas:</strong></p>
-                <ul>
-                    <li>Quality Assurance & Testing</li>
-                    <li>Regulatory Compliance</li>
-                    <li>Safety Standards</li>
-                    <li>Performance Validation</li>
-                    <li>Certification Services</li>
-                </ul>
-                <p><strong>Partnership Benefits:</strong></p>
-                <ul>
-                    <li>Access to specialized testing equipment</li>
-                    <li>Expert compliance guidance</li>
-                    <li>Streamlined certification processes</li>
-                    <li>Quality assurance support</li>
-                </ul>
-                <p><strong>How to Apply:</strong> Click on any of the partner logos above or use the "Know More About Company" button to learn about specific partners and their services.</p>
-            </div>
-        `;
-    }
+        </div>
+    `;
+    
+    // Initialize QR Scanner
+    initializeQRScanner();
     
     // Show modal
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
+}
+
+function initializeQRScanner() {
+    // Check if QR scanner library is available
+    if (typeof Html5Qrcode !== 'undefined') {
+        const html5QrcodeScanner = new Html5QrcodeScanner(
+            "qr-reader",
+            { 
+                fps: 10, 
+                qrbox: { width: 250, height: 250 } 
+            },
+            false
+        );
+        
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+    } else {
+        // Fallback if QR scanner library is not loaded
+        const qrReader = document.getElementById('qr-reader');
+        if (qrReader) {
+            qrReader.innerHTML = `
+                <div class="qr-scanner-fallback">
+                    <div class="qr-scanner-icon">📱</div>
+                    <h4>QR Code Scanner</h4>
+                    <p>To enable QR code scanning, please ensure the QR scanner library is loaded.</p>
+                    <p>For now, you can manually enter QR code information or contact us directly.</p>
+                </div>
+            `;
+        }
+    }
+}
+
+function onScanSuccess(decodedText, decodedResult) {
+    // Handle successful QR code scan
+    alert(`QR Code Scanned Successfully!\n\nContent: ${decodedText}`);
+    
+    // You can add more sophisticated handling here
+    // For example, redirect to a URL or show specific information
+    if (decodedText.startsWith('http')) {
+        window.open(decodedText, '_blank');
+    }
+}
+
+function onScanFailure(error) {
+    // Handle scan failure (optional)
+    // Most failures are handled silently by the library
 }
 
 function closeCompanyInfoModal() {

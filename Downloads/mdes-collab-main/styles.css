@@ -7750,6 +7750,65 @@ h5.hero-title {
     color: #ff5e00;
 }
 
+/* QR Scanner Modal Styles */
+.qr-scanner-modal {
+    max-width: 350px;
+    width: 90%;
+}
+
+.qr-scanner-container {
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.qr-scanner-wrapper {
+    margin: 0;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px solid #ff5e00;
+}
+
+.qr-scanner-fallback {
+    padding: 1rem;
+    text-align: center;
+}
+
+.qr-scanner-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.qr-scanner-fallback h4 {
+    color: #ff5e00;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.qr-scanner-fallback p {
+    margin-bottom: 0.25rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* QR Scanner responsive styles */
+@media screen and (max-width: 768px) {
+    .qr-scanner-modal {
+        width: 95%;
+        margin: 10% auto;
+        max-width: 300px;
+    }
+    
+    .qr-scanner-wrapper {
+        padding: 0.25rem;
+    }
+    
+    #qr-reader {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
 /* Modal responsive styles for collaborator form */
 @media screen and (max-width: 768px) {
     .collaborator-form {
