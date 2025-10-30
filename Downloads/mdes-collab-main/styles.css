@@ -7796,8 +7796,17 @@ h5.hero-title {
 
 /* QR Scanner Modal Styles */
 .qr-scanner-modal {
-    max-width: 350px;
+    max-width: 400px;
     width: 90%;
+}
+
+/* Different modal sizes based on company */
+.qr-scanner-modal[data-company="Company 1"] {
+    max-width: 420px;
+}
+
+.qr-scanner-modal[data-company="Company 2"] {
+    max-width: 450px;
 }
 
 .qr-scanner-container {
@@ -7811,6 +7820,17 @@ h5.hero-title {
     background: #f8f9fa;
     border-radius: 10px;
     border: 2px solid #ff5e00;
+}
+
+/* Different wrapper styles based on company */
+.qr-scanner-wrapper[data-company="Company 1"] {
+    border-color: #ea580c;
+    background: #fff5f0;
+}
+
+.qr-scanner-wrapper[data-company="Company 2"] {
+    border-color: #dc7826;
+    background: #fffaf5;
 }
 
 .qr-scanner-fallback {

@@ -1199,7 +1199,7 @@ function showCompanyInfo(companyName) {
         modal.id = 'companyInfoModal';
         modal.className = 'modal';
         modal.innerHTML = `
-            <div class="modal-content qr-scanner-modal">
+            <div class="modal-content qr-scanner-modal" id="qrScannerModal">
                 <div class="modal-header">
                     <h2 id="companyInfoTitle">QR Code Scanner</h2>
                     <span class="close" onclick="closeCompanyInfoModal()">&times;</span>
@@ -1215,35 +1215,83 @@ function showCompanyInfo(companyName) {
     }
     
     // Update content based on company
+    const modalContent = document.getElementById('qrScannerModal');
     const title = document.getElementById('companyInfoTitle');
     const content = document.getElementById('qrScannerContent');
     
-    title.textContent = 'QR Scanner';
-    content.innerHTML = `
-        <div class="qr-scanner-container">
-            <div class="qr-scanner-wrapper">
-                <div id="qr-reader" style="width: 250px; height: 250px; margin: 0 auto;"></div>
+    // Different QR scanner configurations based on company
+    if (companyName === 'Company 1') {
+        title.textContent = 'Company 1 QR Scanner';
+        // Set data attribute for styling
+        modalContent.setAttribute('data-company', 'Company 1');
+        content.innerHTML = `
+            <div class="qr-scanner-container">
+                <div class="qr-scanner-wrapper" data-company="Company 1">
+                    <div id="qr-reader" style="width: 280px; height: 280px; margin: 0 auto;"></div>
+                </div>
             </div>
-        </div>
-    `;
-    
-    // Initialize QR Scanner
-    initializeQRScanner();
+        `;
+        // Initialize QR Scanner with Company 1 configuration
+        initializeQRScanner('Company 1');
+    } else if (companyName === 'Company 2') {
+        title.textContent = 'Company 2 QR Scanner';
+        // Set data attribute for styling
+        modalContent.setAttribute('data-company', 'Company 2');
+        content.innerHTML = `
+            <div class="qr-scanner-container">
+                <div class="qr-scanner-wrapper" data-company="Company 2">
+                    <div id="qr-reader" style="width: 300px; height: 300px; margin: 0 auto;"></div>
+                </div>
+            </div>
+        `;
+        // Initialize QR Scanner with Company 2 configuration
+        initializeQRScanner('Company 2');
+    } else {
+        title.textContent = 'QR Scanner';
+        // Remove data attribute for default styling
+        modalContent.removeAttribute('data-company');
+        content.innerHTML = `
+            <div class="qr-scanner-container">
+                <div class="qr-scanner-wrapper">
+                    <div id="qr-reader" style="width: 250px; height: 250px; margin: 0 auto;"></div>
+                </div>
+            </div>
+        `;
+        // Initialize QR Scanner with default configuration
+        initializeQRScanner();
+    }
     
     // Show modal
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
 
-function initializeQRScanner() {
+function initializeQRScanner(companyName) {
     // Check if QR scanner library is available
     if (typeof Html5Qrcode !== 'undefined') {
+        // Different QR scanner configurations based on company
+        let config = {
+            fps: 10, 
+            qrbox: { width: 250, height: 250 }
+        };
+        
+        if (companyName === 'Company 1') {
+            // Company 1 configuration - slightly larger scanner with faster fps
+            config = {
+                fps: 15, 
+                qrbox: { width: 280, height: 280 }
+            };
+        } else if (companyName === 'Company 2') {
+            // Company 2 configuration - even larger scanner with different fps
+            config = {
+                fps: 12, 
+                qrbox: { width: 300, height: 300 }
+            };
+        }
+        
         const html5QrcodeScanner = new Html5QrcodeScanner(
             "qr-reader",
-            { 
-                fps: 10, 
-                qrbox: { width: 250, height: 250 } 
-            },
+            config,
             false
         );
         
@@ -1252,10 +1300,11 @@ function initializeQRScanner() {
         // Fallback if QR scanner library is not loaded
         const qrReader = document.getElementById('qr-reader');
         if (qrReader) {
+            const companyText = companyName ? ` for ${companyName}` : '';
             qrReader.innerHTML = `
                 <div class="qr-scanner-fallback">
                     <div class="qr-scanner-icon">📱</div>
-                    <h4>QR Code Scanner</h4>
+                    <h4>QR Code Scanner${companyText}</h4>
                     <p>To enable QR code scanning, please ensure the QR scanner library is loaded.</p>
                     <p>For now, you can manually enter QR code information or contact us directly.</p>
                 </div>
