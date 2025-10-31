@@ -1225,10 +1225,10 @@ function showCompanyInfo(companyName) {
     content.innerHTML = `
         <div class="qr-scanner-container-double">
             <div class="qr-scanner-wrapper-item">
-                <img src="Screenshot 2025-10-30 at 3.36.16 PM.png" alt="Company 1 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
+                <img src="Screenshot%202025-10-30%20at%203.36.16%E2%80%AFPM.png" alt="Company 1 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
             </div>
             <div class="qr-scanner-wrapper-item">
-                <img src="Screenshot 2025-10-30 at 3.46.34 PM.png" alt="Company 2 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
+                <img src="Screenshot%202025-10-30%20at%203.46.34%E2%80%AFPM.png" alt="Company 2 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
             </div>
         </div>
     `;
