@@ -7796,7 +7796,7 @@ h5.hero-title {
 
 /* QR Scanner Modal Styles */
 .qr-scanner-modal {
-    max-width: 900px;
+    max-width: 500px;
     width: 90%;
 }
 

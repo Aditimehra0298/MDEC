@@ -1219,19 +1219,28 @@ function showCompanyInfo(companyName) {
     const title = document.getElementById('companyInfoTitle');
     const content = document.getElementById('qrScannerContent');
     
-    // Show both QR scanner images side by side
-    title.textContent = 'QR Code Scanners';
-    modalContent.removeAttribute('data-company');
-    content.innerHTML = `
-        <div class="qr-scanner-container-double">
-            <div class="qr-scanner-wrapper-item">
-                <img src="Screenshot%202025-10-30%20at%203.36.16%E2%80%AFPM.png" alt="Company 1 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
+    // Show single QR scanner image based on company
+    if (companyName === 'Company 1') {
+        title.textContent = 'Company 1 QR Scanner';
+        modalContent.removeAttribute('data-company');
+        content.innerHTML = `
+            <div class="qr-scanner-container">
+                <div class="qr-scanner-wrapper">
+                    <img src="Screenshot%202025-10-30%20at%203.46.34%E2%80%AFPM.png" alt="Company 1 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
+                </div>
             </div>
-            <div class="qr-scanner-wrapper-item">
-                <img src="Screenshot%202025-10-30%20at%203.46.34%E2%80%AFPM.png" alt="Company 2 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
+        `;
+    } else if (companyName === 'Company 2') {
+        title.textContent = 'Company 2 QR Scanner';
+        modalContent.removeAttribute('data-company');
+        content.innerHTML = `
+            <div class="qr-scanner-container">
+                <div class="qr-scanner-wrapper">
+                    <img src="Screenshot%202025-10-30%20at%203.36.16%E2%80%AFPM.png" alt="Company 2 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    }
     
     // Show modal
     modal.style.display = 'block';
