@@ -1219,47 +1219,19 @@ function showCompanyInfo(companyName) {
     const title = document.getElementById('companyInfoTitle');
     const content = document.getElementById('qrScannerContent');
     
-    // Different QR scanner configurations based on company
-    if (companyName === 'Company 1') {
-        title.textContent = 'Company 1 QR Scanner';
-        // Set data attribute for styling
-        modalContent.setAttribute('data-company', 'Company 1');
-        content.innerHTML = `
-            <div class="qr-scanner-container">
-                <div class="qr-scanner-wrapper" data-company="Company 1">
-                    <div id="qr-reader" style="width: 280px; height: 280px; margin: 0 auto;"></div>
-                </div>
+    // Show both QR scanner images side by side
+    title.textContent = 'QR Code Scanners';
+    modalContent.removeAttribute('data-company');
+    content.innerHTML = `
+        <div class="qr-scanner-container-double">
+            <div class="qr-scanner-wrapper-item">
+                <img src="Screenshot 2025-10-30 at 3.36.16 PM.png" alt="Company 1 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
             </div>
-        `;
-        // Initialize QR Scanner with Company 1 configuration
-        initializeQRScanner('Company 1');
-    } else if (companyName === 'Company 2') {
-        title.textContent = 'Company 2 QR Scanner';
-        // Set data attribute for styling
-        modalContent.setAttribute('data-company', 'Company 2');
-        content.innerHTML = `
-            <div class="qr-scanner-container">
-                <div class="qr-scanner-wrapper" data-company="Company 2">
-                    <div id="qr-reader" style="width: 300px; height: 300px; margin: 0 auto;"></div>
-                </div>
+            <div class="qr-scanner-wrapper-item">
+                <img src="Screenshot 2025-10-30 at 3.46.34 PM.png" alt="Company 2 QR Scanner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
             </div>
-        `;
-        // Initialize QR Scanner with Company 2 configuration
-        initializeQRScanner('Company 2');
-    } else {
-        title.textContent = 'QR Scanner';
-        // Remove data attribute for default styling
-        modalContent.removeAttribute('data-company');
-        content.innerHTML = `
-            <div class="qr-scanner-container">
-                <div class="qr-scanner-wrapper">
-                    <div id="qr-reader" style="width: 250px; height: 250px; margin: 0 auto;"></div>
-                </div>
-            </div>
-        `;
-        // Initialize QR Scanner with default configuration
-        initializeQRScanner();
-    }
+        </div>
+    `;
     
     // Show modal
     modal.style.display = 'block';

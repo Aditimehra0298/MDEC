@@ -7796,7 +7796,7 @@ h5.hero-title {
 
 /* QR Scanner Modal Styles */
 .qr-scanner-modal {
-    max-width: 400px;
+    max-width: 900px;
     width: 90%;
 }
 
@@ -7812,6 +7812,24 @@ h5.hero-title {
 .qr-scanner-container {
     text-align: center;
     padding: 0.5rem 0;
+}
+
+/* Double QR scanner container for side-by-side images */
+.qr-scanner-container-double {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-scanner-wrapper-item {
+    flex: 1;
+    max-width: 48%;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px solid #ff5e00;
 }
 
 .qr-scanner-wrapper {
@@ -7860,7 +7878,16 @@ h5.hero-title {
     .qr-scanner-modal {
         width: 95%;
         margin: 10% auto;
-        max-width: 300px;
+        max-width: 95%;
+    }
+    
+    .qr-scanner-container-double {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .qr-scanner-wrapper-item {
+        max-width: 100%;
     }
     
     .qr-scanner-wrapper {
